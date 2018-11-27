@@ -21,10 +21,31 @@ class App extends Component {
         status: "done"
         }
       ],
+      newItem : {},
       query: "What you need do?"
     }
+    this.addNewItem = this.addNewItem.bind(this)
     // this.returnToToDo = this.returnToToDo.bind(this)
   }
+
+  //item adding function
+ addNewItem = e => {
+   e.preventDefault ()
+     const itemsList = this.state.itemsList.concat(
+       this.state.newItem
+     );
+     this.setState({
+     newItem : {},
+     itemsList: itemsList,
+     })
+   }
+
+  handleInput = e => {
+    const itemName = e.target.value;
+    const newItem = {name: itemName, key: Date.now()}
+    this.setState({newItem,})
+  }
+
 
 
 
@@ -36,6 +57,9 @@ class App extends Component {
           <h1 className="App-title">Basic To-do list!</h1>
           <TaskAddBar
           query = {query}
+          addNewItem = {this.addNewItem}
+          newItem = {this.state.newItem}
+          handleInput = {this.state.handleInput}
           />
         </header>
         <TheList
