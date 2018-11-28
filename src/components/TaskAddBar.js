@@ -2,20 +2,23 @@ import React, { Component } from 'react';
 
 
 class TaskAddBar extends Component {
+
   render() {
-    // const itemName = this.props.query;
+    const task = this.props.newItem
     return (
       <div>
-        <form onSubmit={this.props.addNewItem}>
+      <form onSubmit={this.props.addNewItem}>
           <input type="text"
-            placeholder={this.props.query}
+            placeholder="What do you need to do?"
             onChange={this.props.handleInput}
+            value={task}
             />
             <button
-            type="submit">
+            type="submit"
+            onClick={this.props.addNewItem}>
             Add to List
             </button>
-        </form>
+            </form>
       </div>
     )
   }

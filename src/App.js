@@ -10,62 +10,68 @@ class App extends Component {
 
     this.state = {
       itemsList : [
-        {
-        name : "get crunk",
-        status : "todo"},
-        {
-        name : "get uncrunk",
-        status: "todo"},
-        {
-        name : "go sleep",
-        status: "done"
-        }
+        // {
+        // name : "get crunk",
+        // status : "todo"},
+        // {
+        // name : "get uncrunk",
+        // status: "todo"},
+        // {
+        // name : "go sleep",
+        // status: "done"
+        // }
       ],
-      newItem : {},
-      query: "What you need do?"
+      newItem : "",
+      defaultField: "What you need do?"
     }
-    this.addNewItem = this.addNewItem.bind(this)
-    // this.returnToToDo = this.returnToToDo.bind(this)
+    // this.addNewItem = this.addNewItem.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
 
   //item adding function
  addNewItem = e => {
    e.preventDefault ()
-     const itemsList = this.state.itemsList.concat(
-       this.state.newItem
-     );
+   console.log(e.target.value)
+   if (this.state.newItem !== "") {
+     const newItem = {name: this.state.newItem, status:"todo", key: Date.now()}
+     console.log(newItem);
+     const itemsList = [...this.state.itemsList, newItem];
      this.setState({
-     newItem : {},
-     itemsList: itemsList,
-     })
+       newItem: "",
+       itemsList: itemsList,
+       })
+     }
    }
 
-  handleInput = e => {
-    const itemName = e.target.value;
-    const newItem = {name: itemName, key: Date.now()}
-    this.setState({newItem,})
-  }
+   handleInput = e => {
+     const itemName = e.target.value;
+       this.setState({newItem: itemName})
+   }
 
-
+   // checkPress = e => {
+   //   console.log(e);
+    // if (e.target.value == "Enter") {
+    //   this.addNewItem;
+    // }
+   // }
 
 
   render() {
-    const query = this.state.query
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Basic To-do list!</h1>
           <TaskAddBar
-          query = {query}
           addNewItem = {this.addNewItem}
-          newItem = {this.state.newItem}
-          handleInput = {this.state.handleInput}
+          newItem = {this.state.currentItem}
+          handleInput = {this.handleInput}
+          checkPress = {this.checkPress}
           />
         </header>
         <TheList
-        itemsTodo = {this.state.itemsList}
-        itemsDone = {this.state.itemsList}
-        // returnToToDo = {this.returnToToDo}
+        inputElement={this.inputElement}
+        itemsList = {this.state.itemsList}
          />
       </div>
     );
