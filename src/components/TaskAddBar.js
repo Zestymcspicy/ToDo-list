@@ -4,14 +4,16 @@ import React, { Component } from 'react';
 class TaskAddBar extends Component {
 
   render() {
-    const task = this.props.newItem
     return (
       <div>
-      <form onSubmit={this.props.addNewItem}>
+      <form
+      onSubmit={this.props.addNewItem}
+      id="inputField"
+      >
           <input type="text"
             placeholder="What do you need to do?"
             onChange={this.props.handleInput}
-            value={task}
+            value={this.props.newItem}
             />
             <button
             type="submit"

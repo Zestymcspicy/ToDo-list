@@ -22,7 +22,6 @@ class App extends Component {
         // }
       ],
       newItem : "",
-      defaultField: "What you need do?"
     }
     // this.addNewItem = this.addNewItem.bind(this)
     this.handleInput = this.handleInput.bind(this)
@@ -36,6 +35,7 @@ class App extends Component {
      const newItem = {name: this.state.newItem, status:"todo", key: Date.now()}
      console.log(newItem);
      const itemsList = [...this.state.itemsList, newItem];
+     document.getElementById('inputField').reset();
      this.setState({
        newItem: "",
        itemsList: itemsList,
@@ -64,9 +64,9 @@ class App extends Component {
           <h1 className="App-title">Basic To-do list!</h1>
           <TaskAddBar
           addNewItem = {this.addNewItem}
-          newItem = {this.state.currentItem}
           handleInput = {this.handleInput}
           checkPress = {this.checkPress}
+          inputField = {this.inputField}
           />
         </header>
         <TheList
