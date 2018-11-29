@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class TheList extends Component {
-  
+
   render() {
     return (
       <div className="listbox">
@@ -10,8 +10,13 @@ class TheList extends Component {
       <ul>
       {this.props.itemsList.filter(item=> item.status==="todo").map((item, key) =>
         <li key={key}>
-        <input type="checkbox" />
-        {item.name}</li>)}
+        <input
+        key={item.key}
+        onChange={this.props.toggleList}
+        type="checkbox"
+        name={item.name} />
+        {item.name}
+        </li>)}
       </ul>
       </div>
       <div className="Completed">
@@ -19,8 +24,14 @@ class TheList extends Component {
       <ul>
       {this.props.itemsList.filter(item => item.status==="done").map((item, key) =>
         <li key={key}>
-        <input type="checkbox" defaultChecked />
-        {item.name}</li>)}
+        <input
+        onChange={this.props.toggleList}
+        key={key}
+        type="checkbox"
+        defaultChecked
+        name={item.name}/>
+        {item.name}
+        </li>)}
       </ul>
       </div>
       </div>

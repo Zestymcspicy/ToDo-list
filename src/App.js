@@ -16,10 +16,11 @@ class App extends Component {
         // {
         // name : "get uncrunk",
         // status: "todo"},
-        // {
-        // name : "go sleep",
-        // status: "done"
-        // }
+        {
+        name : "go sleep",
+        status: "done",
+        key: Date.now(),
+        }
       ],
       newItem : "",
     }
@@ -43,17 +44,20 @@ class App extends Component {
      }
    }
 
+   toggleList = e => {
+     const toggleName = e.target.name;
+     const itemToToggle = this.state.itemsList.filter(x=>x.name==toggleName)[0]
+     const nextArray = this.state.itemsList.filter(x=>x.name!==toggleName)
+     itemToToggle.status == "todo" ? itemToToggle.status="done" : itemToToggle.status="todo";
+     this.setState({itemsList: nextArray.concat(itemToToggle)})
+   }
+
    handleInput = e => {
      const itemName = e.target.value;
        this.setState({newItem: itemName})
    }
 
-   // checkPress = e => {
-   //   console.log(e);
-    // if (e.target.value == "Enter") {
-    //   this.addNewItem;
-    // }
-   // }
+
 
 
   render() {
@@ -65,13 +69,12 @@ class App extends Component {
           <TaskAddBar
           addNewItem = {this.addNewItem}
           handleInput = {this.handleInput}
-          checkPress = {this.checkPress}
-          inputField = {this.inputField}
           />
         </header>
         <TheList
         inputElement={this.inputElement}
         itemsList = {this.state.itemsList}
+        toggleList = {this.toggleList}
          />
       </div>
     );
