@@ -23,6 +23,7 @@ class App extends Component {
         }
       ],
       newItem : "",
+      placeholder : "What do you need to do?",
     }
     // this.addNewItem = this.addNewItem.bind(this)
     this.handleInput = this.handleInput.bind(this)
@@ -32,7 +33,13 @@ class App extends Component {
  addNewItem = e => {
    e.preventDefault ()
    console.log(e.target.value)
-   if (this.state.newItem !== "") {
+   if (this.state.newItem == "" ) {
+      return
+   }
+   if (this.state.itemsList.some(x => x.name===this.state.newItem)) {
+     document.getElementById('inputField').reset();
+     this.setState({placeholder: "That's already on your list"})
+   }else{
      const newItem = {name: this.state.newItem, status:"todo", key: Date.now()}
      console.log(newItem);
      const itemsList = [...this.state.itemsList, newItem];
@@ -40,6 +47,7 @@ class App extends Component {
      this.setState({
        newItem: "",
        itemsList: itemsList,
+       placeholder: "Alright! What else?"
        })
      }
    }
@@ -54,6 +62,7 @@ class App extends Component {
 
    handleInput = e => {
      const itemName = e.target.value;
+     console.log(itemName)
        this.setState({newItem: itemName})
    }
 
@@ -69,6 +78,7 @@ class App extends Component {
           <TaskAddBar
           addNewItem = {this.addNewItem}
           handleInput = {this.handleInput}
+          placeholder = {this.state.placeholder}
           />
         </header>
         <TheList

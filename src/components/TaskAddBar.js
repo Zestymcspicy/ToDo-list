@@ -11,7 +11,7 @@ class TaskAddBar extends Component {
       id="inputField"
       >
           <input type="text"
-            placeholder="What do you need to do?"
+            placeholder={this.props.placeholder}
             onChange={this.props.handleInput}
             value={this.props.newItem}
             />

@@ -23,7 +23,8 @@ class TheList extends Component {
       <span>Done!</span>
       <ul>
       {this.props.itemsList.filter(item => item.status==="done").map((item, key) =>
-        <li key={key}>
+        <li key={key}
+        className="completed-items">
         <input
         onChange={this.props.toggleList}
         key={key}
