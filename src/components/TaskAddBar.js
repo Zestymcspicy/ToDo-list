@@ -5,7 +5,7 @@ class TaskAddBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="task-add-bar">
       <form
       onSubmit={this.props.addNewItem}
       id="inputField"
@@ -17,6 +17,7 @@ class TaskAddBar extends Component {
             />
             <button
             type="submit"
+            className="add-button"
             onClick={this.props.addNewItem}>
             Add to List
             </button>

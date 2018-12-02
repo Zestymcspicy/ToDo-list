@@ -29,6 +29,10 @@ ul {
   font-size: 1.5em;
 }
 
+.add-button{
+  margin: 10px;
+}
+
 .App-intro {
   font-size: large;
 }
