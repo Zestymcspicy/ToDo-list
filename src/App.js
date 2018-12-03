@@ -20,6 +20,7 @@ class App extends Component {
         name : "go sleep",
         status: "done",
         key: Date.now(),
+        timeDue: new Date(),
         }
       ],
       newItem : "",
@@ -33,7 +34,7 @@ class App extends Component {
  addNewItem = e => {
    e.preventDefault ()
    console.log(e.target.value)
-   if (this.state.newItem == "" ) {
+   if (this.state.newItem === "" ) {
       return
    }
    if (this.state.itemsList.some(x => x.name===this.state.newItem)) {
@@ -54,9 +55,9 @@ class App extends Component {
 
    toggleList = e => {
      const toggleName = e.target.name;
-     const itemToToggle = this.state.itemsList.filter(x=>x.name==toggleName)[0]
+     const itemToToggle = this.state.itemsList.filter(x=>x.name===toggleName)[0]
      const nextArray = this.state.itemsList.filter(x=>x.name!==toggleName)
-     itemToToggle.status == "todo" ? itemToToggle.status="done" : itemToToggle.status="todo";
+     itemToToggle.status === "todo" ? itemToToggle.status="done" : itemToToggle.status="todo";
      this.setState({itemsList: nextArray.concat(itemToToggle)})
    }
 
@@ -66,6 +67,9 @@ class App extends Component {
        this.setState({newItem: itemName})
    }
 
+   addDueDate = dateTime => {
+
+   }
 
 
 
@@ -86,6 +90,9 @@ class App extends Component {
         itemsList = {this.state.itemsList}
         toggleList = {this.toggleList}
          />
+         <footer>
+         <span className="attributions">Calendar icon made by http://www.elegantthemes.com/ from www.flaticon.com </span>
+         </footer>
       </div>
     );
   }

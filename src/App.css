@@ -8,9 +8,8 @@
   flex-flow: row;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.attributions {
+  font-size: 10pt;
 }
 
 ul {
@@ -29,8 +28,17 @@ ul {
   font-size: 1.5em;
 }
 
+.addDateButton {
+  padding: 0px;
+  margin-left: 5px;
+}
+
 .add-button{
   margin: 10px;
+}
+
+.ItemNameCheckboxDiv {
+  padding-top: 5px;
 }
 
 .App-intro {
@@ -52,4 +60,10 @@ ul {
 
 .completed-items {
   text-decoration: line-through;
+}
+
+.ToDoListEntry {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
 }
