@@ -5,7 +5,7 @@ class TheList extends Component {
 
   render() {
     return (
-      <div className="listbox">
+      <div className="Listbox">
       <div className="To-do">
       <span>To-do</span>
       <ul>
@@ -30,7 +30,7 @@ class TheList extends Component {
       <ul>
       {this.props.itemsList.filter(item => item.status==="done").map((item, key) =>
         <li key={key}
-        className="completed-items">
+        className="Completed-items">
         <input
         onChange={this.props.toggleList}
         key={key}

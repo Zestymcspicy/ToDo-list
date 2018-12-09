@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TheList from './components/TheList.js'
 import TaskAddBar from './components/TaskAddBar.js'
@@ -52,7 +51,7 @@ class App extends Component {
        })
      }
    }
-
+//toggle from the "todo" to the "done" list
    toggleList = e => {
      const toggleName = e.target.name;
      const itemToToggle = this.state.itemsList.filter(x=>x.name===toggleName)[0]
@@ -63,8 +62,7 @@ class App extends Component {
 
    handleInput = e => {
      const itemName = e.target.value;
-     console.log(itemName)
-       this.setState({newItem: itemName})
+        this.setState({newItem: itemName})
    }
 
    addDueDate = dateTime => {
@@ -91,7 +89,7 @@ class App extends Component {
         toggleList = {this.toggleList}
          />
          <footer>
-         <span className="attributions">Calendar icon made by http://www.elegantthemes.com/ from www.flaticon.com </span>
+         <span className="Attributions">Calendar icon made by http://www.elegantthemes.com/ from www.flaticon.com </span>
          </footer>
       </div>
     );

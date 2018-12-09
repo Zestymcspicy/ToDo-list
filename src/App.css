@@ -3,12 +3,45 @@
 }
 
 
-.listbox {
+.Listbox {
   display:flex;
   flex-flow: row;
 }
 
-.attributions {
+button:hover {
+  cursor: pointer;
+}
+
+.Dropdown-entry {
+  padding: 0px 3px 0px 3px;
+}
+
+.Dropdown {
+  border: 1px solid black;
+  margin: 10px;
+  display: block;
+
+}
+
+.DueDateSpan {
+  width: 100%;
+  display: block;
+}
+
+.Dropdown-entry:hover, .Dropdown:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.Dropdown-list {
+  /* padding: 0px 3px 0px 3px; */
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.Attributions {
   font-size: 10pt;
 }
 
@@ -28,7 +61,7 @@ ul {
   font-size: 1.5em;
 }
 
-.addDateButton {
+.AddDateButton {
   padding: 0px;
   margin-left: 5px;
 }
@@ -58,7 +91,7 @@ ul {
   to { transform: rotate(360deg); }
 }
 
-.completed-items {
+.Completed-items {
   text-decoration: line-through;
 }
 
@@ -66,4 +99,18 @@ ul {
   display: flex;
   justify-content: center;
   margin: 5px;
+}
+
+.Dropdown-title{
+  padding: 3px;
+}
+
+.Modal-container {
+  border: 1px;
+  height: 5%;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  width: 250px;
+  height: 50px;
 }
