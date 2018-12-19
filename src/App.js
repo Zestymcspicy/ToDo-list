@@ -3,6 +3,8 @@ import './App.css';
 import TheList from './components/TheList.js'
 import TaskAddBar from './components/TaskAddBar.js'
 
+
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -17,9 +19,9 @@ class App extends Component {
         // status: "todo"},
         {
         name : "go sleep",
-        status: "done",
+        status: "todo",
         key: Date.now(),
-        timeDue: new Date(),
+        dueDate: {},
         }
       ],
       newItem : "",
@@ -69,7 +71,7 @@ class App extends Component {
 
    }
 
-
+   
 
   render() {
 
@@ -84,7 +86,6 @@ class App extends Component {
           />
         </header>
         <TheList
-        inputElement={this.inputElement}
         itemsList = {this.state.itemsList}
         toggleList = {this.toggleList}
          />

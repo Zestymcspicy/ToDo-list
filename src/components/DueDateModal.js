@@ -11,11 +11,7 @@ class DueDateModal extends Component {
       calendarButtonDisplay: "block",
     }
   }
-handleClickOutside(){
-  this.setState({
-    modalDisplayState: "none"
-  })
-}
+
 
 // createDate = () => {
 //   let year = document.getElementById("yearField").value;
@@ -37,8 +33,10 @@ modalVisible = e => {
   })
 }
 
-  render () {
 
+  render () {
+    const yearsArray = new Array(30).fill(1,0).map((x, index)=> x=2018+index);
+    const daysArray = new Array(30).fill(1,0).map((x, index)=>x=x+index);
     const monthsArray = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     return(
       <div>
@@ -51,14 +49,19 @@ modalVisible = e => {
           </button>
         </div>
         <div>
-          <div  className="Modal-container" style={{display: this.state.modalDisplayState}}>
+          <div className="Modal-container" style={{display: this.state.modalDisplayState}}>
             <span className="DueDateSpan">Add a due date</span>
+            <span
+            className="Close-button"
+            onClick={this.modalVisible}>X</span>
             <Dropdown
             options={monthsArray}
             name="month?"/>
             <Dropdown
+            options={daysArray}
             name="day?"/>
             <Dropdown
+            options={yearsArray}
             name="year?"/>
           </div>
         </div>

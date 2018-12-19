@@ -1,5 +1,7 @@
 import React, { Component} from 'react'
 
+let month;
+
 class Dropdown extends Component {
   constructor(props){
     super(props)
@@ -17,6 +19,11 @@ showDropdown(e) {
   this.setState({menuVisible : true})
 }
 
+setValue(e) {
+  month = e.target.innerHTML.toString();
+  console.log(month)
+}
+
   render() {
     return(
       <div>
@@ -32,7 +39,8 @@ showDropdown(e) {
         {this.props.options.map((item, key) =>
           <li
           key={key}
-          className="Dropdown-entry">
+          className="Dropdown-entry"
+          onClick={this.setValue}>
           {item}
           </li>)}
         </ul>):(null)
