@@ -21,7 +21,7 @@ class App extends Component {
         name : "go sleep",
         status: "todo",
         key: Date.now(),
-        dueDate: {},
+        dueDate: null,
         }
       ],
       newItem : "",
@@ -71,7 +71,7 @@ class App extends Component {
 
    }
 
-   
+
 
   render() {
 

@@ -44,6 +44,12 @@ button:hover {
   border-style: solid;
   overflow-y: scroll;
   height: 20%;
+  min-height: 100px;
+  background-color: white;
+}
+
+.highlight{
+  background-color: #e9f627;
 }
 
 .Attributions {

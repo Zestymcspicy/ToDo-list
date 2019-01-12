@@ -22,7 +22,7 @@ class TheList extends Component {
         name={item.name} />
         {item.name}
         </div>
-        <DueDateModal />
+        <DueDateModal dueDate={this.dueDate}/>
         </li>)}
       </ul>
       </div>

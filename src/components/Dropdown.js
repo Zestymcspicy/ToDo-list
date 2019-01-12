@@ -1,6 +1,5 @@
 import React, { Component} from 'react'
 
-let month;
 
 class Dropdown extends Component {
   constructor(props){
@@ -19,11 +18,6 @@ showDropdown(e) {
   this.setState({menuVisible : true})
 }
 
-setValue(e) {
-  month = e.target.innerHTML.toString();
-  console.log(month)
-}
-
   render() {
     return(
       <div>
@@ -31,7 +25,7 @@ setValue(e) {
           <span
           className="Dropdown-title"
           onClick={this.showDropdown}>
-          {this.props.name}
+          {this.props.name}?
           </span>
         </div>
       { this.state.menuVisible ? (
@@ -40,7 +34,7 @@ setValue(e) {
           <li
           key={key}
           className="Dropdown-entry"
-          onClick={this.setValue}>
+          onClick={this.props.setValue}>
           {item}
           </li>)}
         </ul>):(null)

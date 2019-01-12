@@ -7,18 +7,16 @@ class DueDateModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      monthValue : undefined,
+      dayValue: undefined,
+      yearValue: undefined,
       modalDisplayState : "none",
-      calendarButtonDisplay: "block",
+      calendarButtonDisplay: "block"
     }
+    this.setValue=this.setValue.bind(this);
   }
 
 
-// createDate = () => {
-//   let year = document.getElementById("yearField").value;
-//   let month = document.getElementById("monthField").value;
-//   let hour = document.getElementById("hourField").value;
-//   let minutes = document.getElementById("dateTimeDue").value;
-// }
 
 //function for the visibility of the modal
 modalVisible = e => {
@@ -33,6 +31,19 @@ modalVisible = e => {
   })
 }
 
+setValue = e => {
+  e.target.classList.add("highlight");
+  if(Number.isNaN(Number(e.target.innerHTML))){
+    let month = e.target.innerHTML;
+    this.setState({monthValue : month});
+  } else {
+    let dayOrYear = Number(e.target.innerHTML);
+    dayOrYear>1000?
+    this.setState({yearValue : dayOrYear}):
+    this.setState({dayValue : dayOrYear});
+  }
+}
+
 
   render () {
     const yearsArray = new Array(30).fill(1,0).map((x, index)=> x=2018+index);
@@ -40,6 +51,7 @@ modalVisible = e => {
     const monthsArray = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     return(
       <div>
+      {this.props.dueDate==null?
         <div>
           <button
           onClick={this.modalVisible}
@@ -47,7 +59,7 @@ modalVisible = e => {
           style={{display: this.state.CalendarButtonDisplay}}>
             <img style={{height: "20px", width: "20px"}} src={calendarButton} alt="add a due date" />
           </button>
-        </div>
+
         <div>
           <div className="Modal-container" style={{display: this.state.modalDisplayState}}>
             <span className="DueDateSpan">Add a due date</span>
@@ -55,16 +67,21 @@ modalVisible = e => {
             className="Close-button"
             onClick={this.modalVisible}>X</span>
             <Dropdown
+            setValue={this.setValue}
             options={monthsArray}
-            name="month?"/>
+            name="month"/>
             <Dropdown
+            setValue={this.setValue}
             options={daysArray}
-            name="day?"/>
+            name="day"/>
             <Dropdown
+            setValue={this.setValue}
             options={yearsArray}
-            name="year?"/>
+            name="year"/>
           </div>
         </div>
+      </div>:
+      <span>{this.props.dueDate}</span>}
       </div>
     )
   }
