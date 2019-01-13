@@ -7,9 +7,15 @@ class Dropdown extends Component {
 
     this.state = {
       menuVisible : false,
+      value : this.props.name
     }
     this.showDropdown=this.showDropdown.bind(this)
   }
+
+changeValue(e) {
+  let value = e.target.innerHTML;
+  this.setState({value : value});
+}
 
 showDropdown(e) {
   e.preventDefault();
@@ -25,7 +31,9 @@ showDropdown(e) {
           <span
           className="Dropdown-title"
           onClick={this.showDropdown}>
-          {this.props.name}?
+          {this.state.value===this.props.name?
+          `${this.state.value}?`:
+          `${this.state.value}`}
           </span>
         </div>
       { this.state.menuVisible ? (
@@ -34,7 +42,7 @@ showDropdown(e) {
           <li
           key={key}
           className="Dropdown-entry"
-          onClick={this.props.setValue}>
+          onClick={(event)=>{this.props.setValue(event);this.showDropdown(event);this.changeValue(event)}}>
           {item}
           </li>)}
         </ul>):(null)

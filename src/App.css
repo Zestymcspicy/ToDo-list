@@ -97,6 +97,21 @@ ul {
   width: 50%;
 }
 
+#SetDateButton {
+  border: 1px solid black;
+  margin: 10px 0 18px 0;
+  display: block;
+  padding: 0 0 0 0;
+  height: 19px;
+}
+
+#SetDateButton:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -118,14 +133,13 @@ ul {
 
 .Modal-container {
   border: 1px solid black;
-  height: 5%;
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
-  width: 250px;
-  height: 50px;
+  width: 310px;
+  height: 80px;
   background-color: #B9B9B9;
-  /* box-shadow: 5px 5px 5px #366343; */
+  box-shadow: 5px 5px 5px #366343;
   border-radius: 7px;
   margin-left: 1%;
   padding: 7px 0px 7px 0px;

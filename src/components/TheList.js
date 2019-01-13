@@ -13,16 +13,18 @@ class TheList extends Component {
       {this.props.itemsList.filter(item=> item.status==="todo").map((item, key) =>
         <li
         className="ToDoListEntry"
-        key={key}>
+        key={item.key}>
         <div className="ItemNameCheckboxDiv">
         <input
-        key={item.key}
         onChange={this.props.toggleList}
         type="checkbox"
         name={item.name} />
         {item.name}
         </div>
-        <DueDateModal dueDate={this.dueDate}/>
+        <DueDateModal
+        itemKey={item.key}        
+        setDate={this.props.setDate}
+        dueDate={this.dueDate}/>
         </li>)}
       </ul>
       </div>

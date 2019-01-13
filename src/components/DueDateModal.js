@@ -7,9 +7,9 @@ class DueDateModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      monthValue : undefined,
-      dayValue: undefined,
-      yearValue: undefined,
+      monthValue : 0,
+      dayValue: 0,
+      yearValue: 0,
       modalDisplayState : "none",
       calendarButtonDisplay: "block"
     }
@@ -32,6 +32,7 @@ modalVisible = e => {
 }
 
 setValue = e => {
+  e.preventDefault();
   e.target.classList.add("highlight");
   if(Number.isNaN(Number(e.target.innerHTML))){
     let month = e.target.innerHTML;
@@ -69,15 +70,21 @@ setValue = e => {
             <Dropdown
             setValue={this.setValue}
             options={monthsArray}
-            name="month"/>
+            name="Month"/>
             <Dropdown
             setValue={this.setValue}
             options={daysArray}
-            name="day"/>
+            name="Day"/>
             <Dropdown
             setValue={this.setValue}
             options={yearsArray}
-            name="year"/>
+            name="Year"/>
+            <div id="SetDateButton"
+            onClick={this.props.setDate(this.state.monthValue, this.state.dayValue ,this.state.yearValue, this.props.itemKey)}>
+              <span>
+              Set Date
+              </span>
+            </div>
           </div>
         </div>
       </div>:

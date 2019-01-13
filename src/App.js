@@ -21,7 +21,7 @@ class App extends Component {
         name : "go sleep",
         status: "todo",
         key: Date.now(),
-        dueDate: null,
+        dueDate: null
         }
       ],
       newItem : "",
@@ -42,7 +42,10 @@ class App extends Component {
      document.getElementById('inputField').reset();
      this.setState({placeholder: "That's already on your list"})
    }else{
-     const newItem = {name: this.state.newItem, status:"todo", key: Date.now()}
+     const newItem = {name: this.state.newItem,
+       status:"todo",
+       key: Date.now(),
+       dueDate: null}
      console.log(newItem);
      const itemsList = [...this.state.itemsList, newItem];
      document.getElementById('inputField').reset();
@@ -67,7 +70,15 @@ class App extends Component {
         this.setState({newItem: itemName})
    }
 
-   addDueDate = dateTime => {
+   //TODO: fix this!
+   setDate = (month, day, year, key) => {
+     const dueDate = new Date(`${month} ${day}, ${year}`);
+       const itemToAddDate = this.state.itemsList.filter(x => x.key===key)[0];
+       const arrayToUpdate = this.state.itemsList.filter(x => x.key!==key);
+       itemToAddDate.dueDate = dueDate;
+       const nextItemList = arrayToUpdate.concat(itemToAddDate);
+       this.setState({itemsList: nextItemList});
+       console.log(itemToAddDate)
 
    }
 
@@ -88,6 +99,7 @@ class App extends Component {
         <TheList
         itemsList = {this.state.itemsList}
         toggleList = {this.toggleList}
+        setDate = {this.setDate}
          />
          <footer>
          <span className="Attributions">Calendar icon made by http://www.elegantthemes.com/ from www.flaticon.com </span>
