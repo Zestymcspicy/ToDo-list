@@ -77,7 +77,7 @@ class App extends Component {
        const arrayToUpdate = this.state.itemsList.filter(x => x.key!==key);
        itemToAddDate.dueDate = dueDate;
        const nextItemList = arrayToUpdate.concat(itemToAddDate);
-       this.setState({itemsList: nextItemList});
+       // this.setState({itemsList: nextItemList});
        console.log(itemToAddDate)
 
    }
