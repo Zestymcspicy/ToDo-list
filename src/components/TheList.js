@@ -22,9 +22,10 @@ class TheList extends Component {
         {item.name}
         </div>
         <DueDateModal
-        itemKey={item.key}        
+        itemKey={item.key}
         setDate={this.props.setDate}
-        dueDate={this.dueDate}/>
+        dueDate={item.dueDate}/>
+        <span className="DueDateSpan">{item.dueDateString}</span>
         </li>)}
       </ul>
       </div>

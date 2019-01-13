@@ -45,6 +45,10 @@ setValue = e => {
   }
 }
 
+sendDate = () => {
+  this.props.setDate(this.state.monthValue, this.state.dayValue ,this.state.yearValue, this.props.itemKey)
+}
+
 
   render () {
     const yearsArray = new Array(30).fill(1,0).map((x, index)=> x=2018+index);
@@ -52,21 +56,21 @@ setValue = e => {
     const monthsArray = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     return(
       <div>
-      {this.props.dueDate==null?
-        <div>
           <button
           onClick={this.modalVisible}
           className="AddDateButton"
           style={{display: this.state.CalendarButtonDisplay}}>
             <img style={{height: "20px", width: "20px"}} src={calendarButton} alt="add a due date" />
           </button>
-
         <div>
           <div className="Modal-container" style={{display: this.state.modalDisplayState}}>
-            <span className="DueDateSpan">Add a due date</span>
-            <span
-            className="Close-button"
-            onClick={this.modalVisible}>X</span>
+            <div className="ModalTop">
+              <span className="DueDateSpan">Add a due date</span>
+              <span
+              className="Close-button"
+              onClick={this.modalVisible}>X</span>
+            </div>
+            <div className="ButtonHolder">
             <Dropdown
             setValue={this.setValue}
             options={monthsArray}
@@ -80,16 +84,15 @@ setValue = e => {
             options={yearsArray}
             name="Year"/>
             <div id="SetDateButton"
-            onClick={this.props.setDate(this.state.monthValue, this.state.dayValue ,this.state.yearValue, this.props.itemKey)}>
+            onClick={this.sendDate}>
               <span>
               Set Date
               </span>
             </div>
           </div>
         </div>
-      </div>:
-      <span>{this.props.dueDate}</span>}
       </div>
+    </div>
     )
   }
 }

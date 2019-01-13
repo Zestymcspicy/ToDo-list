@@ -21,7 +21,8 @@ class App extends Component {
         name : "go sleep",
         status: "todo",
         key: Date.now(),
-        dueDate: null
+        dueDate: null,
+        dueDateString: ""
         }
       ],
       newItem : "",
@@ -76,10 +77,10 @@ class App extends Component {
        const itemToAddDate = this.state.itemsList.filter(x => x.key===key)[0];
        const arrayToUpdate = this.state.itemsList.filter(x => x.key!==key);
        itemToAddDate.dueDate = dueDate;
+       itemToAddDate.dueDateString = dueDate.toDateString();
        const nextItemList = arrayToUpdate.concat(itemToAddDate);
-       // this.setState({itemsList: nextItemList});
-       console.log(itemToAddDate)
-
+       this.setState({itemsList: nextItemList});
+       console.log(itemToAddDate);
    }
 
 

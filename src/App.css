@@ -16,10 +16,18 @@ button:hover {
   padding: 0px 3px 0px 3px;
 }
 
+.ButtonHolder{
+  width:100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
 .Dropdown {
   border: 1px solid black;
-  margin: 10px;
+  margin: auto;
   display: block;
+  width: auto;
 }
 
 .DueDateSpan {
@@ -28,7 +36,9 @@ button:hover {
 }
 
 .Close-button{
-  width: 10%
+  height: 20px;
+  width: 10%;
+  display:block;
 }
 
 .Dropdown-entry:hover, .Dropdown:hover, .Close-button:hover {
@@ -83,6 +93,7 @@ ul {
 
 .ItemNameCheckboxDiv {
   padding-top: 5px;
+  width: 30%;
 }
 
 .App-intro {
@@ -99,10 +110,8 @@ ul {
 
 #SetDateButton {
   border: 1px solid black;
-  margin: 10px 0 18px 0;
   display: block;
-  padding: 0 0 0 0;
-  height: 19px;
+  height: 20px;
 }
 
 #SetDateButton:hover {
@@ -117,6 +126,11 @@ ul {
   to { transform: rotate(360deg); }
 }
 
+.ModalTop{
+  width:100%;
+  display:flex;
+}
+
 .Completed-items {
   text-decoration: line-through;
 }
@@ -125,13 +139,17 @@ ul {
   display: flex;
   justify-content: center;
   margin: 5px;
+  width: 100%;
 }
+
 
 .Dropdown-title{
   padding: 3px;
 }
 
 .Modal-container {
+  position: relative;
+  z-index: 4;
   border: 1px solid black;
   display: flex;
   flex-flow: row;
