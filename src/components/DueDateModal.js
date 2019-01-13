@@ -20,6 +20,7 @@ class DueDateModal extends Component {
 
 //function for the visibility of the modal
 modalVisible = e => {
+  this.props.toggleDateDisplay();
   this.state.modalDisplayState==="none"?
   this.setState({
     modalDisplayState:"flex",
@@ -33,7 +34,6 @@ modalVisible = e => {
 
 setValue = e => {
   e.preventDefault();
-  e.target.classList.add("highlight");
   if(Number.isNaN(Number(e.target.innerHTML))){
     let month = e.target.innerHTML;
     this.setState({monthValue : month});

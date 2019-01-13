@@ -30,6 +30,10 @@ button:hover {
   width: auto;
 }
 
+.DueDateDislpay{
+  margin: auto;
+}
+
 .DueDateSpan {
   width: 90%;
   display: block;
@@ -58,9 +62,7 @@ button:hover {
   background-color: white;
 }
 
-.highlight{
-  background-color: #e9f627;
-}
+
 
 .Attributions {
   font-size: 10pt;
