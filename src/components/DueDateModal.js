@@ -52,8 +52,11 @@ sendDate = () => {
 
   render () {
     const yearsArray = new Array(30).fill(1,0).map((x, index)=> x=2018+index);
-    const daysArray = new Array(30).fill(1,0).map((x, index)=>x=x+index);
+    let daysArray = new Array(31).fill(1,0).map((x, index)=>x=x+index);
     const monthsArray = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+    if(this.state.monthValue==="February") {
+      daysArray = new Array(28).fill(1,0).map((x, index)=>x=x+index);
+    }
     return(
       <div>
           <button

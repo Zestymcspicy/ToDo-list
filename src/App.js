@@ -22,7 +22,8 @@ class App extends Component {
         status: "todo",
         key: Date.now(),
         dueDate: null,
-        dueDateString: ""
+        dueDateString: "",
+        dateDisplay:"block"
         }
       ],
       newItem : "",
@@ -46,7 +47,9 @@ class App extends Component {
      const newItem = {name: this.state.newItem,
        status:"todo",
        key: Date.now(),
-       dueDate: null}
+       dueDate: null,
+       dateDisplay:"block"
+      }
      console.log(newItem);
      const itemsList = [...this.state.itemsList, newItem];
      document.getElementById('inputField').reset();
@@ -71,17 +74,24 @@ class App extends Component {
         this.setState({newItem: itemName})
    }
 
-   //TODO: fix this!
+   //makes a new updated itemsList with the dueDate added to the item
    setDate = (month, day, year, key) => {
      const dueDate = new Date(`${month} ${day}, ${year}`);
-       const itemToAddDate = this.state.itemsList.filter(x => x.key===key)[0];
-       const arrayToUpdate = this.state.itemsList.filter(x => x.key!==key);
-       itemToAddDate.dueDate = dueDate;
-       itemToAddDate.dueDateString = dueDate.toDateString();
-       const nextItemList = arrayToUpdate.concat(itemToAddDate);
-       this.setState({itemsList: nextItemList});
-       console.log(itemToAddDate);
+     const itemToAddDate = this.state.itemsList.filter(x => x.key===key)[0];
+     const arrayToUpdate = this.state.itemsList.filter(x => x.key!==key);
+     itemToAddDate.dueDate = dueDate;
+     itemToAddDate.dueDateString = dueDate.toDateString();
+     const nextItemList = arrayToUpdate.concat(itemToAddDate);
+     this.setState({itemsList: nextItemList});
+     console.log(itemToAddDate);
    }
+
+   toggleDateDisplay = () => {
+     this.state.dateDisplay=="block"?
+     this.setState({dateDisplay:"none"}):
+     this.setState({dateDisplay:"block"})
+   }
+
 
 
 
